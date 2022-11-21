@@ -1,7 +1,9 @@
 const express = require('express');
-
+const cors = require('cors');
 // setting up express server
 const app = express();
+
+app.use(cors());
 app.use(express.json());
 
 const token = require('./routes/token');
