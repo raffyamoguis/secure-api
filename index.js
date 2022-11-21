@@ -3,12 +3,12 @@ const cors = require('cors');
 // setting up express server
 const app = express();
 
-app.use(cors());
 app.use(express.json());
 
 const token = require('./routes/token');
 const messages = require('./routes/messages');
 
+app.use(cors());
 // application routes
 app.use('/api/token', token); //Generate token
 app.use('/api/messages', messages); //Secure api
