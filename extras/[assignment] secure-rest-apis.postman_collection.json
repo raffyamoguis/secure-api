@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "6b08737b-46a4-4fdd-b9d2-ada4bfacceaf",
+		"name": "[assignment] secure-rest-apis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get auth token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"var tken = response[\"token\"];\r",
+							"pm.environment.set('secure-rest-api-token', tken);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"abc@example.com\",\r\n    \"password\": \"P@ssword01!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all messages",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "{{secure-rest-api-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3005/api/messages",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create message",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "{{secure-rest-api-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{$randomFullName}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/messages",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete message",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "{{secure-rest-api-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3005/api/messages?key=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"messages"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
