@@ -1,7 +1,7 @@
 {
-  "name": "secure-rest-apis",
+  "name": "api-secure",
   "version": "1.0.0",
-  "description": "how to secure rest apis in express",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -17,8 +17,8 @@
     "bcrypt",
     "jsonwebtoken"
   ],
-  "author": "geeks",
-  "license": "MIT",
+  "author": "",
+  "license": "",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "express": "^4.17.3",
