@@ -27,7 +27,7 @@ Response >>>
 
 ### Secured api
 ```sh
-method: post 'api/messages'
+method: get 'api/messages'
 headers: {'x-auth-token: 'token'}
 ```
 Response >>>
@@ -41,7 +41,7 @@ Response >>>
 
 ### Free api
 ```sh
-method: post 'api/free'
+method: get 'api/free'
 ```
 Response >>>
 ```json
